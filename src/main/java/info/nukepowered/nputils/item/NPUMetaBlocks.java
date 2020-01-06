@@ -1,10 +1,5 @@
 package info.nukepowered.nputils.item;
 
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
-
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.pipelike.cable.WireProperties;
 import gregtech.common.pipelike.fluidpipe.FluidPipeProperties;
@@ -18,18 +13,28 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
 public class NPUMetaBlocks {
 	
 	public static NPUMultiblockCasing MULTIBLOCK_CASING;
 	
 	public static NPUTransparentCasing TRANSPARENT_CASING;
-	
+
+	public static NPUMetalCasing METAL_CASING;
+
 	public static void init() {
 		MULTIBLOCK_CASING = new NPUMultiblockCasing();
 		MULTIBLOCK_CASING.setRegistryName("npu_multiblock_casing");
 
 		TRANSPARENT_CASING = new NPUTransparentCasing();
 		TRANSPARENT_CASING.setRegistryName("npu_transparent_casing");
+
+		METAL_CASING = new NPUMetalCasing();
+		METAL_CASING.setRegistryName("npu_metal_casing");
 
 		MetaBlocks.FLUID_PIPE.addPipeMaterial(NPUMaterials.Plasma, new FluidPipeProperties(1000000, 30, true));
 
@@ -45,6 +50,7 @@ public class NPUMetaBlocks {
 	public static void registerItemModels() {
 		registerItemModel(MULTIBLOCK_CASING);
 		registerItemModel(TRANSPARENT_CASING);
+		registerItemModel(METAL_CASING);
 	}
 
 	@SideOnly(Side.CLIENT)

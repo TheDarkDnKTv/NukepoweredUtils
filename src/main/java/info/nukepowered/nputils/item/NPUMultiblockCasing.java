@@ -20,7 +20,9 @@ public class NPUMultiblockCasing extends VariantBlock<NPUMultiblockCasing.Casing
 	public enum CasingType implements IStringSerializable {
 
 //		REACTOR_CASING("reactor_casing"),
-		TUNGSTENSTEEL_GEARBOX_CASING("tungstensteel_gearbox_casing");
+		TUNGSTENSTEEL_GEARBOX_CASING("tungstensteel_gearbox_casing"),
+		CHEMICALLY_INERT("chemically_inert_casing"),
+		LARGE_ASSEMBLER("large_assembler_casing");
 		
 		private final String name;
 		

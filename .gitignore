@@ -22,3 +22,6 @@ local.properties
 .loadpath
 /eclipse
 .project
+
+*.iml
+.idea/

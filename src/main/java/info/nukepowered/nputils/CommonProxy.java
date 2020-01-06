@@ -1,7 +1,5 @@
 package info.nukepowered.nputils;
 
-import java.util.function.Function;
-
 import gregtech.common.blocks.VariantItemBlock;
 import info.nukepowered.nputils.api.NPULib;
 import info.nukepowered.nputils.input.Keybinds;
@@ -9,15 +7,7 @@ import info.nukepowered.nputils.item.NPUMetaBlocks;
 import info.nukepowered.nputils.item.NPUMetaItems;
 import info.nukepowered.nputils.machines.NPUTileEntities;
 import info.nukepowered.nputils.network.NetworkHandler;
-import info.nukepowered.nputils.recipes.AEIntegration;
-import info.nukepowered.nputils.recipes.DisassemblyRecipes;
-import info.nukepowered.nputils.recipes.ForestryIntegration;
-import info.nukepowered.nputils.recipes.GeneratorFuels;
-import info.nukepowered.nputils.recipes.MachineCraftingRecipes;
-import info.nukepowered.nputils.recipes.MatterReplication;
-import info.nukepowered.nputils.recipes.NPUMachineRecipeRemoval;
-import info.nukepowered.nputils.recipes.NPURecipeAddition;
-import info.nukepowered.nputils.recipes.TinkersIntegration;
+import info.nukepowered.nputils.recipes.*;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
@@ -29,6 +19,8 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.registries.IForgeRegistry;
+
+import java.util.function.Function;
 
 @Mod.EventBusSubscriber(modid = NPUtils.MODID)
 public class CommonProxy {
@@ -60,6 +52,7 @@ public class CommonProxy {
 		IForgeRegistry<Block> registry = e.getRegistry();
 		registry.register(NPUMetaBlocks.MULTIBLOCK_CASING);
 		registry.register(NPUMetaBlocks.TRANSPARENT_CASING);
+		registry.register(NPUMetaBlocks.METAL_CASING);
 	}
 	
 	@SubscribeEvent
@@ -67,6 +60,7 @@ public class CommonProxy {
 		IForgeRegistry<Item> registry = e.getRegistry();
 		registry.register(createItemBlock(NPUMetaBlocks.MULTIBLOCK_CASING, VariantItemBlock::new));
 		registry.register(createItemBlock(NPUMetaBlocks.TRANSPARENT_CASING, VariantItemBlock::new));
+		registry.register(createItemBlock(NPUMetaBlocks.METAL_CASING, VariantItemBlock::new));
 	}
 	
 	private static <T extends Block> ItemBlock createItemBlock(T block, Function<T, ItemBlock> producer) {

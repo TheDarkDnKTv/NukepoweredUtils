@@ -32,6 +32,19 @@ public class NPUTextures {
 	
     public static final SimpleOverlayRenderer ENERGY_IN_MULTI_16;
     public static final SimpleOverlayRenderer ENERGY_IN_PANELMODE;
+
+	public static SimpleCubeRenderer CHEMICALLY_INERT = new SimpleCubeRenderer("casings/solid/machine_casing_chemically_inert");
+	public static SimpleCubeRenderer RED_STEEL_CASING = new SimpleCubeRenderer("casings/solid/machine_casing_red_steel");
+	public static SimpleCubeRenderer TUMBAGA = new SimpleCubeRenderer("casings/solid/machine_casing_tumbaga");
+	public static SimpleCubeRenderer LARGE_ASSEMBLER = new SimpleCubeRenderer("casings/solid/machine_casing_large_assembler");
+	public static SimpleCubeRenderer POTIN = new SimpleCubeRenderer("casings/solid/machine_casing_potin");
+	public static SimpleCubeRenderer STELLITE_TALONITE = new SimpleCubeRenderer("casings/solid/machine_casing_stellite_talonite");
+	public static SimpleCubeRenderer STABALLOY = new SimpleCubeRenderer("casings/solid/machine_casing_staballoy");
+	public static SimpleCubeRenderer EGLIN_STEEL = new SimpleCubeRenderer("casings/solid/machine_casing_eglin_steel");
+	public static SimpleCubeRenderer GRISIUM = new SimpleCubeRenderer("casings/solid/machine_casing_grisium");
+	public static SimpleCubeRenderer MARAGING_STEEL = new SimpleCubeRenderer("casings/solid/machine_casing_maraging_steel");
+	public static SimpleCubeRenderer INCONEL = new SimpleCubeRenderer("casings/solid/machine_casing_inconel");
+	public static SimpleCubeRenderer HASTELLOY_N = new SimpleCubeRenderer("casings/solid/machine_casing_hastelloy_n");
     
 //  GUI Textures
     public static final TextureArea BRONZE_FLUID_SLOT = TextureArea.fullImage("textures/gui/steam/fluid_slot.png");
@@ -61,5 +74,7 @@ public class NPUTextures {
         FUSION_REACTOR_OVERLAY = new OrientedOverlayRenderer("machines/fusion_reactor", new OverlayFace[]{OverlayFace.FRONT});
 
         STEAM_MIXER_OVERLAY = new OrientedOverlayRenderer("machines/steam_mixer", new OverlayFace[]{OverlayFace.FRONT, OverlayFace.SIDE, OverlayFace.TOP});
+
+
     }
 }

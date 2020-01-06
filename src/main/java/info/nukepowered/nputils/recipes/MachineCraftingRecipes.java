@@ -4,30 +4,36 @@ import gregtech.api.GTValues;
 import gregtech.api.items.OreDictNames;
 import gregtech.api.metatileentity.ITieredMetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntity;
+import gregtech.api.recipes.CountableIngredient;
 import gregtech.api.recipes.ModHandler;
+import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.unification.OreDictUnifier;
-import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.material.MarkerMaterials.Tier;
+import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.common.blocks.BlockMachineCasing;
 import gregtech.common.blocks.BlockMetalCasing;
+import gregtech.common.blocks.BlockMetalCasing.MetalCasingType;
 import gregtech.common.blocks.BlockMultiblockCasing;
 import gregtech.common.blocks.MetaBlocks;
-import gregtech.common.blocks.BlockMetalCasing.MetalCasingType;
 import gregtech.common.items.MetaItems;
 import gregtech.common.metatileentities.MetaTileEntities;
 import info.nukepowered.nputils.NPUConfig;
+import info.nukepowered.nputils.NPUMaterials;
+import info.nukepowered.nputils.item.NPUMetaBlocks;
 import info.nukepowered.nputils.item.NPUMetaItems;
+import info.nukepowered.nputils.item.NPUMetalCasing;
+import info.nukepowered.nputils.item.NPUMultiblockCasing;
 import info.nukepowered.nputils.machines.NPUTileEntities;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
-import static info.nukepowered.nputils.recipes.NPUCraftingComponents.*;
-
 import java.util.Arrays;
+
+import static info.nukepowered.nputils.recipes.NPUCraftingComponents.*;
 
 
 public class MachineCraftingRecipes {
@@ -74,7 +80,22 @@ public class MachineCraftingRecipes {
         ModHandler.addShapedRecipe("nputils:large_plasma_turbine", MetaTileEntities.LARGE_PLASMA_TURBINE.getStackForm(), "PSP", "SAS", "CSC", 'S', new UnificationEntry(OrePrefix.gear, Materials.TungstenSteel), 'P', new UnificationEntry(OrePrefix.circuit, Tier.Master), 'A', MetaTileEntities.HULL[GTValues.UV].getStackForm(), 'C', OreDictUnifier.get(OrePrefix.pipeLarge, Materials.TungstenSteel));
         ModHandler.addShapedRecipe("nputils:assembly_line", NPUTileEntities.ASSEMBLY_LINE.getStackForm(), "CRC", "SAS", "CRC", 'A', MetaTileEntities.HULL[GTValues.IV].getStackForm(), 'R', MetaItems.ROBOT_ARM_IV, 'C', MetaBlocks.MUTLIBLOCK_CASING.getItemVariant(BlockMultiblockCasing.MultiblockCasingType.ASSEMBLER_CASING), 'S', new UnificationEntry(OrePrefix.circuit, Tier.Elite));
         ModHandler.addShapedRecipe("nputils:processing_array", NPUTileEntities.PROCESSING_ARRAY.getStackForm(), "CBC","RHR","CDC",'H',MetaTileEntities.HULL[GTValues.IV].getStackForm(), 'R',MetaItems.ROBOT_ARM_IV, 'C', new UnificationEntry(OrePrefix.valueOf("circuit"), Tier.Elite), 'B', MetaItems.ENERGY_LAPOTRONIC_ORB, 'D', new UnificationEntry(OrePrefix.pipeLarge, Materials.TungstenSteel));
-        
+        ModHandler.addShapedRecipe("nputils:large_thermal_centrifuge", NPUTileEntities.LARGE_THERMAL_CENTRIFUGE.getStackForm(), "CBC", "RHR", "CDC", 'H', NPUTileEntities.THERMAL_CENTRIFUGE[0].getStackForm(), 'R', new UnificationEntry(OrePrefix.stick, Materials.RedSteel), 'B', new UnificationEntry(OrePrefix.circuit, Tier.Extreme), 'C', new UnificationEntry(OrePrefix.plate, Materials.RedSteel), 'D', new UnificationEntry(OrePrefix.gear, Materials.RedSteel));
+        ModHandler.addShapedRecipe("nputils:large_bender_and_forming", NPUTileEntities.LARGE_BENDER_AND_FORMING.getStackForm(), "CBC", "RHR", "CBC", 'H', MetaTileEntities.BENDER[3].getStackForm(), 'R', MetaTileEntities.HULL[GTValues.EV].getStackForm(), 'B', new UnificationEntry(OrePrefix.valueOf("circuit"), Tier.Advanced), 'C', new UnificationEntry(OrePrefix.plate, Materials.Titanium));
+        ModHandler.addShapedRecipe("nputils:large_centrifuge", NPUTileEntities.LARGE_CENTRIFUGE.getStackForm(), "CBC", "RHR", "DED", 'H', MetaTileEntities.CENTRIFUGE[3].getStackForm(), 'E', MetaTileEntities.HULL[GTValues.IV].getStackForm(), 'C', new UnificationEntry(OrePrefix.valueOf("circuit"), Tier.Extreme), 'B', new UnificationEntry(OrePrefix.pipeLarge, Materials.StainlessSteel), 'D', new UnificationEntry(OrePrefix.plate, NPUMaterials.Tumbaga), 'R', new UnificationEntry(OrePrefix.plate, Materials.Titanium));
+        ModHandler.addShapedRecipe("nputils:large_chemical_reactor", NPUTileEntities.LARGE_CHEMICAL_REACTOR.getStackForm(), "DBD", "CHC", "DED", 'H', NPUTileEntities.CHEMICAL_REACTOR[0].getStackForm(), 'E', MetaTileEntities.HULL[GTValues.LuV].getStackForm(), 'C', new UnificationEntry(OrePrefix.valueOf("circuit"), Tier.Elite), 'B', new UnificationEntry(OrePrefix.pipeLarge, Materials.StainlessSteel), 'D', NPUMetaBlocks.MULTIBLOCK_CASING.getItemVariant(NPUMultiblockCasing.CasingType.CHEMICALLY_INERT));
+        ModHandler.addShapedRecipe("nputils:large_cutting", NPUTileEntities.LARGE_CUTTING.getStackForm(), "DBD", "CHC", "DED", 'H', NPUTileEntities.CUTTER[0].getStackForm(), 'C', MetaTileEntities.HULL[GTValues.IV].getStackForm(), 'B', new UnificationEntry(OrePrefix.valueOf("circuit"), Tier.Advanced), 'E', new UnificationEntry(OrePrefix.valueOf("circuit"), Tier.Extreme), 'D', new UnificationEntry(OrePrefix.plate, NPUMaterials.MaragingSteel250));
+        ModHandler.addShapedRecipe("nputils:large_electrolyzer", NPUTileEntities.LARGE_ELECTROLYZER.getStackForm(), "DBD", "CHC", "DED", 'H', MetaTileEntities.ELECTROLYZER[3].getStackForm(), 'C', MetaTileEntities.HULL[GTValues.EV].getStackForm(), 'B', new UnificationEntry(OrePrefix.valueOf("circuit"), Tier.Extreme), 'E', new UnificationEntry(OrePrefix.valueOf("circuit"), Tier.Extreme), 'D', new UnificationEntry(OrePrefix.plate, NPUMaterials.Stellite));
+        ModHandler.addShapedRecipe("nputils:large_extruder", NPUTileEntities.LARGE_EXTRUDER.getStackForm(), "DBD", "CHC", "DED", 'H', MetaTileEntities.EXTRUDER[2].getStackForm(), 'C', MetaTileEntities.HULL[GTValues.EV].getStackForm(), 'B', new UnificationEntry(OrePrefix.valueOf("circuit"), Tier.Extreme), 'E', new UnificationEntry(OrePrefix.valueOf("circuit"), Tier.Extreme), 'D', new UnificationEntry(OrePrefix.plate, NPUMaterials.Inconel625));
+        ModHandler.addShapedRecipe("nputils:large_macerator", NPUTileEntities.LARGE_MACERATOR.getStackForm(), "DBD", "CHC", "DED", 'C', MetaTileEntities.MACERATOR[2].getStackForm(), 'E', MetaTileEntities.HULL[GTValues.IV].getStackForm(), 'H', new UnificationEntry(OrePrefix.valueOf("circuit"), Tier.Master), 'B', MetaTileEntities.MACERATOR[3].getStackForm(), 'D', new UnificationEntry(OrePrefix.plate, Materials.TungstenCarbide));
+        ModHandler.addShapedRecipe("nputils:large_mixer", NPUTileEntities.LARGE_MIXER.getStackForm(), "DED", "CHC", "DED", 'C', new UnificationEntry(OrePrefix.plate, Materials.TungstenCarbide), 'E', new UnificationEntry(OrePrefix.valueOf("circuit"), Tier.Extreme), 'H', MetaTileEntities.MIXER[3].getStackForm(), 'D', new UnificationEntry(OrePrefix.plate, NPUMaterials.Staballoy));
+        ModHandler.addShapedRecipe("nputils:large_multi_use", NPUTileEntities.LARGE_MULTI_USE.getStackForm(), "ABC", "DED", "GHI", 'A', MetaTileEntities.COMPRESSOR[3].getStackForm(), 'B', MetaTileEntities.LATHE[3].getStackForm(), 'C', MetaTileEntities.POLARIZER[3].getStackForm(), 'D', new UnificationEntry(OrePrefix.plate, NPUMaterials.Staballoy), 'E', MetaTileEntities.HULL[GTValues.EV].getStackForm(), 'G', MetaTileEntities.FERMENTER[3].getStackForm(), 'H', MetaTileEntities.LASER_ENGRAVER[3].getStackForm(), 'I', MetaTileEntities.EXTRACTOR[3].getStackForm() );
+        ModHandler.addShapedRecipe("nputils:large_sifter", NPUTileEntities.LARGE_SIFTER.getStackForm(), "DBD", "CHC", "DED", 'H', MetaTileEntities.SIFTER[3].getStackForm(), 'B', new UnificationEntry(OrePrefix.valueOf("circuit"), Tier.Good), 'E', new UnificationEntry(OrePrefix.valueOf("circuit"), Tier.Advanced), 'C', new UnificationEntry(OrePrefix.cableGtSingle, Materials.Gold), 'D', new UnificationEntry(OrePrefix.plate, NPUMaterials.EglinSteel));
+        ModHandler.addShapedRecipe("nputils:large_washing_plant", NPUTileEntities.LARGE_WASHING_PLANT.getStackForm(), "DBD", "CHC", "DED", 'H', MetaTileEntities.ORE_WASHER[3].getStackForm(), 'B', new UnificationEntry(OrePrefix.valueOf("circuit"), Tier.Good), 'E', new UnificationEntry(OrePrefix.valueOf("circuit"), Tier.Good), 'C', new UnificationEntry(OrePrefix.plate, NPUMaterials.Talonite), 'D', new UnificationEntry(OrePrefix.plate, NPUMaterials.Grisium));
+        ModHandler.addShapedRecipe("nputils:large_wiremill", NPUTileEntities.LARGE_WIREMILL.getStackForm(), "DED", "CHC", "DED", 'H', MetaTileEntities.WIREMILL[3].getStackForm(), 'E', MetaTileEntities.HULL[GTValues.IV].getStackForm(), 'C', new UnificationEntry(OrePrefix.valueOf("circuit"), Tier.Extreme), 'D', new UnificationEntry(OrePrefix.plate, NPUMaterials.MaragingSteel250));
+        ModHandler.addShapedRecipe("nputils:volcanus", NPUTileEntities.VOLCANUS.getStackForm(), "GCG", "IHI", "PCP", 'H', MetaTileEntities.ELECTRIC_BLAST_FURNACE.getStackForm(),  'C', new UnificationEntry(OrePrefix.valueOf("circuit"), Tier.Elite), 'P', new UnificationEntry(OrePrefix.plate, NPUMaterials.HastelloyN),'G', new UnificationEntry(OrePrefix.gear, NPUMaterials.HastelloyN), 'I' , MetaItems.ROBOT_ARM_IV);
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().fluidInputs(NPUMaterials.HastelloyN.getFluid(144 * 4)).inputs(NPUMetaBlocks.METAL_CASING.getItemVariant(NPUMetalCasing.MetalCasingType.STABALLOY, 2), MetaItems.EMITTER_LUV.getStackForm(2), MetaItems.SENSOR_LUV.getStackForm(2)).inputs(CountableIngredient.from(OrePrefix.circuit, Tier.Elite)).outputs(NPUTileEntities.LARGE_ASSEMBLER.getStackForm()).duration(600).EUt(8000).buildAndRegister();
+
         //Generators
         registerMachineRecipe(NPUTileEntities.NAQUADAH_REACTOR, "RCR", "FMF", "QCQ", 'M', HULL, 'Q', CABLE_QUAD, 'C', BETTER_CIRCUIT, 'F', FIELD_GENERATOR, 'R', STICK_RADIOACTIVE);
 

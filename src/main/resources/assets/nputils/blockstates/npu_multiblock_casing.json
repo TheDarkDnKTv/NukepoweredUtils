@@ -17,6 +17,16 @@
         "textures": {
           "all": "gregtech:blocks/casings/gearbox/machine_casing_gearbox_tungstensteel"
         }
+      },
+      "chemically_inert_casing": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/machine_casing_chemically_inert"
+        }
+      },
+      "large_assembler_casing": {
+        "textures": {
+          "all": "gregtech:blocks/casings/solid/machine_casing_large_assembler"
+        }
       }
     }
   }

@@ -12,6 +12,8 @@ import info.nukepowered.nputils.NPUConfig;
 import info.nukepowered.nputils.NPUTextures;
 import info.nukepowered.nputils.NPUtils;
 import info.nukepowered.nputils.api.NPUMachineMetaTileEntity;
+import info.nukepowered.nputils.machines.advance.*;
+import info.nukepowered.nputils.machines.simple.*;
 import info.nukepowered.nputils.recipes.NPURecipeMaps;
 import net.minecraft.util.ResourceLocation;
 
@@ -64,8 +66,24 @@ public class NPUTileEntities {
 
     public static TileEntityAssemblyLine ASSEMBLY_LINE;
     public static TileEntityProcessingArray PROCESSING_ARRAY;
+	public static TileEntityLargeThermalCentrifuge LARGE_THERMAL_CENTRIFUGE;
+	public static TileEntityLargeElectrolyzer LARGE_ELECTROLYZER;
+	public static TileEntityLargeCentrifuge LARGE_CENTRIFUGE;
+	public static TileEntityLargeCutting LARGE_CUTTING;
+	public static TileEntityLargeMacerator LARGE_MACERATOR;
+	public static TileEntityLargeMixer LARGE_MIXER;
+	public static TileEntityLargeMultiUse LARGE_MULTI_USE;
+	public static TileEntityLargeBenderAndForming LARGE_BENDER_AND_FORMING;
+	public static TileEntityLargeSifter LARGE_SIFTER;
+	public static TileEntityLargeWashingPlant LARGE_WASHING_PLANT;
+	public static TileEntityLargeWiremill LARGE_WIREMILL;
+	public static TileEntityLargeChemicalReactor LARGE_CHEMICAL_REACTOR;
+	public static TileEntityLargeExtruder LARGE_EXTRUDER;
+	public static TileEntityVolcanus VOLCANUS;
+	public static TileEntityLargeAssembler LARGE_ASSEMBLER;
 
-    public static SteamMixer STEAM_MIXER;
+
+	public static SteamMixer STEAM_MIXER;
     
     public static TileEntitySolarPanel SOLAR_PANEL[] = new TileEntitySolarPanel[3];
     public static TileEntityPowerInverter POWER_INVERTER[] = new TileEntityPowerInverter[3];
@@ -531,6 +549,33 @@ public class NPUTileEntities {
         STEAM_MIXER = GregTechAPI.registerMetaTileEntity(2221, new SteamMixer(location("steam_mixer")));
         
         PROCESSING_ARRAY = GregTechAPI.registerMetaTileEntity(2222, new TileEntityProcessingArray(location("processing_array")));
+		LARGE_THERMAL_CENTRIFUGE = GregTechAPI.registerMetaTileEntity(2523, new TileEntityLargeThermalCentrifuge(location("large_thermal_centrifuge")));
+		LARGE_ELECTROLYZER = GregTechAPI.registerMetaTileEntity(2524, new TileEntityLargeElectrolyzer(location("large_electrolyzer")));
+		//register 2 times for each recipe seems not working
+		LARGE_BENDER_AND_FORMING = GregTechAPI.registerMetaTileEntity(2525, new TileEntityLargeBenderAndForming(location("large_bender_and_forming"), RecipeMaps.BENDER_RECIPES));
+		GregTechAPI.registerMetaTileEntity(2526, new TileEntityLargeBenderAndForming(location("large_bender_and_forming"), RecipeMaps.FORMING_PRESS_RECIPES));
+		LARGE_CENTRIFUGE = GregTechAPI.registerMetaTileEntity(2527, new TileEntityLargeCentrifuge(location("large_centrifuge")));
+		LARGE_CUTTING = GregTechAPI.registerMetaTileEntity(2528, new TileEntityLargeCutting(location("large_cutting")));
+		LARGE_MACERATOR = GregTechAPI.registerMetaTileEntity(2529, new TileEntityLargeMacerator(location("large_macerator")));
+		LARGE_MIXER = GregTechAPI.registerMetaTileEntity(2530, new TileEntityLargeMixer(location("large_mixer")));
+		LARGE_MULTI_USE = GregTechAPI.registerMetaTileEntity(2531, new TileEntityLargeMultiUse(location("large_multi_use"), RecipeMaps.COMPRESSOR_RECIPES));
+		GregTechAPI.registerMetaTileEntity(2532, new TileEntityLargeMultiUse(location("large_multi_use"), RecipeMaps.COMPRESSOR_RECIPES));
+		GregTechAPI.registerMetaTileEntity(2533, new TileEntityLargeMultiUse(location("large_multi_use"), RecipeMaps.LATHE_RECIPES));
+		GregTechAPI.registerMetaTileEntity(2534, new TileEntityLargeMultiUse(location("large_multi_use"), RecipeMaps.POLARIZER_RECIPES));
+		GregTechAPI.registerMetaTileEntity(2535, new TileEntityLargeMultiUse(location("large_multi_use"), RecipeMaps.FERMENTING_RECIPES));
+		GregTechAPI.registerMetaTileEntity(2536, new TileEntityLargeMultiUse(location("large_multi_use"), RecipeMaps.FLUID_EXTRACTION_RECIPES));
+		GregTechAPI.registerMetaTileEntity(2537, new TileEntityLargeMultiUse(location("large_multi_use"), RecipeMaps.EXTRACTOR_RECIPES));
+		GregTechAPI.registerMetaTileEntity(2538, new TileEntityLargeMultiUse(location("large_multi_use"), RecipeMaps.LASER_ENGRAVER_RECIPES));
+		GregTechAPI.registerMetaTileEntity(2539, new TileEntityLargeMultiUse(location("large_multi_use"), RecipeMaps.AUTOCLAVE_RECIPES));
+		GregTechAPI.registerMetaTileEntity(2540, new TileEntityLargeMultiUse(location("large_multi_use"), NPURecipeMaps.REPLICATOR_RECIPES));
+		LARGE_SIFTER = GregTechAPI.registerMetaTileEntity(2541, new TileEntityLargeSifter(location("large_sifter")));
+		LARGE_WASHING_PLANT = GregTechAPI.registerMetaTileEntity(2542, new TileEntityLargeWashingPlant(location("large_washing_plant"), RecipeMaps.ORE_WASHER_RECIPES));
+		GregTechAPI.registerMetaTileEntity(2543, new TileEntityLargeWashingPlant(location("large_washing_plant"), RecipeMaps.CHEMICAL_BATH_RECIPES));
+		LARGE_WIREMILL = GregTechAPI.registerMetaTileEntity(2544, new TileEntityLargeWiremill(location("large_wiremill")));
+		LARGE_CHEMICAL_REACTOR = GregTechAPI.registerMetaTileEntity(2545, new TileEntityLargeChemicalReactor(location("large_chemical_reactor")));
+		LARGE_EXTRUDER = GregTechAPI.registerMetaTileEntity(2546, new TileEntityLargeExtruder(location("large_extruder")));
+		VOLCANUS = GregTechAPI.registerMetaTileEntity(2547, new TileEntityVolcanus(location("volcanus")));
+		LARGE_ASSEMBLER = GregTechAPI.registerMetaTileEntity(2548, new TileEntityLargeAssembler(location("large_assembler")));
 	}
 	
 	private static ResourceLocation location(String name) {

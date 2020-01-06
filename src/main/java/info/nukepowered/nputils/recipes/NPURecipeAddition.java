@@ -1,8 +1,5 @@
 package info.nukepowered.nputils.recipes;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import gregtech.api.GTValues;
 import gregtech.api.items.ToolDictNames;
 import gregtech.api.recipes.CountableIngredient;
@@ -12,32 +9,21 @@ import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.recipes.recipes.FuelRecipe;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.MarkerMaterials;
-import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.material.MarkerMaterials.Tier;
-import gregtech.api.unification.material.type.DustMaterial;
-import gregtech.api.unification.material.type.FluidMaterial;
-import gregtech.api.unification.material.type.GemMaterial;
-import gregtech.api.unification.material.type.IngotMaterial;
-import gregtech.api.unification.material.type.Material;
+import gregtech.api.unification.material.Materials;
+import gregtech.api.unification.material.type.*;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.MaterialStack;
 import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.api.util.GTUtility;
-import gregtech.common.blocks.BlockMetalCasing.MetalCasingType;
-import gregtech.common.blocks.BlockMultiblockCasing.MultiblockCasingType;
-import gregtech.common.blocks.BlockMachineCasing;
-import gregtech.common.blocks.BlockWireCoil;
-import gregtech.common.blocks.MetaBlocks;
+import gregtech.common.blocks.*;
 import gregtech.common.items.MetaItems;
 import gregtech.common.metatileentities.MetaTileEntities;
 import info.nukepowered.nputils.NPUConfig;
 import info.nukepowered.nputils.NPULog;
 import info.nukepowered.nputils.NPUMaterials;
 import info.nukepowered.nputils.armor.PowerlessJetpack;
-import info.nukepowered.nputils.item.NPUMetaBlocks;
-import info.nukepowered.nputils.item.NPUMetaItems;
-import info.nukepowered.nputils.item.NPUMultiblockCasing;
-import info.nukepowered.nputils.item.NPUTransparentCasing;
+import info.nukepowered.nputils.item.*;
 import info.nukepowered.nputils.item.NPUTransparentCasing.CasingType;
 import info.nukepowered.nputils.machines.NPUTileEntities;
 import net.minecraft.block.Block;
@@ -53,6 +39,10 @@ import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandlerItem;
 import net.minecraftforge.fluids.capability.IFluidTankProperties;
 import net.minecraftforge.oredict.OreDictionary;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 
 public class NPURecipeAddition {
@@ -184,7 +174,7 @@ public class NPURecipeAddition {
 		ModHandler.addShapelessRecipe("nputils:clay_brick", NPUMetaItems.COMPRESSED_CLAY.getStackForm(), new ItemStack(Items.CLAY_BALL), MetaItems.WOODEN_FORM_BRICK);
 		ModHandler.addShapedRecipe("nputils:eight_clay_brick", NPUMetaItems.COMPRESSED_CLAY.getStackForm(8), "BBB", "BFB", "BBB", 'B', new ItemStack(Items.CLAY_BALL), 'F', MetaItems.WOODEN_FORM_BRICK);
 		ModHandler.addShapedRecipe("nputils:coke_brick", NPUMetaItems.COMPRESSED_COKE_CLAY.getStackForm(5), "SSS", "BFB", "BBB", 'B', new ItemStack(Items.CLAY_BALL), 'S', new ItemStack(Blocks.SAND), 'F', MetaItems.WOODEN_FORM_BRICK);
-        ModHandler.addShapedRecipe("nputils:coke_bricks", MetaBlocks.METAL_CASING.getItemVariant(MetalCasingType.COKE_BRICKS), "BB", "BB", 'B', NPUMetaItems.COKE_BRICK.getStackForm());
+        ModHandler.addShapedRecipe("nputils:coke_bricks", MetaBlocks.METAL_CASING.getItemVariant(BlockMetalCasing.MetalCasingType.COKE_BRICKS), "BB", "BB", 'B', NPUMetaItems.COKE_BRICK.getStackForm());
         
         //GT5U Old Primitive Brick Processing
         ModHandler.removeFurnaceSmelting(MetaItems.FIRECLAY_BRICK.getStackForm());
@@ -1404,9 +1394,9 @@ public class NPURecipeAddition {
         RecipeMaps.FUSION_RECIPES.recipeBuilder().fluidInputs(Materials.Lithium.getFluid(16), Materials.Tungsten.getFluid(16)).fluidOutputs(Materials.Iridium.getFluid(16)).duration(32).EUt(32768).EUToStart(3000000).buildAndRegister();
         
         //Fusion Casing Recipes
-        ModHandler.addShapedRecipe("fusion_casing_1", MetaBlocks.MUTLIBLOCK_CASING.getItemVariant(MultiblockCasingType.FUSION_CASING), "PhP", "PHP", "PwP", 'P', "plateTungstenSteel", 'H', MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.LuV));
-        ModHandler.addShapedRecipe("fusion_casing_2", MetaBlocks.MUTLIBLOCK_CASING.getItemVariant(MultiblockCasingType.FUSION_CASING_MK2), "PhP", "PHP", "PwP", 'P', "plateAmericium", 'H', MetaBlocks.MUTLIBLOCK_CASING.getItemVariant(MultiblockCasingType.FUSION_CASING));
-        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().EUt(16).inputs(MetaBlocks.MUTLIBLOCK_CASING.getItemVariant(MultiblockCasingType.FUSION_CASING)).input(OrePrefix.plate, Materials.Americium, 6).outputs(MetaBlocks.MUTLIBLOCK_CASING.getItemVariant(MultiblockCasingType.FUSION_CASING_MK2)).duration(50).buildAndRegister();
+        ModHandler.addShapedRecipe("fusion_casing_1", MetaBlocks.MUTLIBLOCK_CASING.getItemVariant(BlockMultiblockCasing.MultiblockCasingType.FUSION_CASING), "PhP", "PHP", "PwP", 'P', "plateTungstenSteel", 'H', MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.LuV));
+        ModHandler.addShapedRecipe("fusion_casing_2", MetaBlocks.MUTLIBLOCK_CASING.getItemVariant(BlockMultiblockCasing.MultiblockCasingType.FUSION_CASING_MK2), "PhP", "PHP", "PwP", 'P', "plateAmericium", 'H', MetaBlocks.MUTLIBLOCK_CASING.getItemVariant(BlockMultiblockCasing.MultiblockCasingType.FUSION_CASING));
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().EUt(16).inputs(MetaBlocks.MUTLIBLOCK_CASING.getItemVariant(BlockMultiblockCasing.MultiblockCasingType.FUSION_CASING)).input(OrePrefix.plate, Materials.Americium, 6).outputs(MetaBlocks.MUTLIBLOCK_CASING.getItemVariant(BlockMultiblockCasing.MultiblockCasingType.FUSION_CASING_MK2)).duration(50).buildAndRegister();
         
         ModHandler.addShapedRecipe("nputils:fusion_coil", MetaBlocks.WIRE_COIL.getItemVariant(BlockWireCoil.CoilType.FUSION_COIL), "CRC", "FSF", "CRC", 'C', "circuitMaster", 'R', MetaItems.NEUTRON_REFLECTOR.getStackForm(), 'F', MetaItems.FIELD_GENERATOR_MV.getStackForm(), 'S', MetaBlocks.WIRE_COIL.getItemVariant(BlockWireCoil.CoilType.SUPERCONDUCTOR));
         
@@ -1561,7 +1551,101 @@ public class NPURecipeAddition {
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(800).EUt(7680).inputs(OreDictUnifier.get(OrePrefix.wireGtDouble, Materials.NaquadahAlloy, 8), NPUMetaItems.MICA_INSULATOR_FOIL.getStackForm(8)).fluidInputs(Materials.Naquadah.getFluid(144)).outputs(MetaBlocks.WIRE_COIL.getItemVariant(BlockWireCoil.CoilType.NAQUADAH_ALLOY)).buildAndRegister();
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(1000).EUt(9001).inputs(OreDictUnifier.get(OrePrefix.wireGtDouble, Tier.Superconductor, 8), NPUMetaItems.MICA_INSULATOR_FOIL.getStackForm(8)).fluidInputs(Materials.NaquadahAlloy.getFluid(144)).outputs(MetaBlocks.WIRE_COIL.getItemVariant(BlockWireCoil.CoilType.SUPERCONDUCTOR)).buildAndRegister();
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().duration(1000).EUt(9001).inputs(OreDictUnifier.get(OrePrefix.wireGtDouble, NPUMaterials.LuVSuperconductor, 32), NPUMetaItems.MICA_INSULATOR_FOIL.getStackForm(16)).fluidInputs(Materials.NaquadahAlloy.getFluid(144)).outputs(MetaBlocks.WIRE_COIL.getItemVariant(BlockWireCoil.CoilType.SUPERCONDUCTOR)).buildAndRegister();
-        NPULog.info(String.format("Advanced recipes was registered for  %.3f seconds", (System.currentTimeMillis() - time) / 1000.0F));
+
+
+		//add missing casing and component
+		RecipeMaps.MIXER_RECIPES.recipeBuilder().duration(50).EUt(120)
+				.input(OrePrefix.dust, Materials.Iron, 4)
+				.input(OrePrefix.dust, Materials.Kanthal, 1)
+				.input(OrePrefix.dust, Materials.Invar, 5)
+				.outputs(OreDictUnifier.get(OrePrefix.dust, NPUMaterials.EglinSteelBase, 10)).buildAndRegister();
+		RecipeMaps.MIXER_RECIPES.recipeBuilder().duration(50).EUt(120)
+				.input(OrePrefix.dust, NPUMaterials.EglinSteelBase, 10)
+				.input(OrePrefix.dust, Materials.Sulfur, 1)
+				.input(OrePrefix.dust, Materials.Silicon, 1)
+				.input(OrePrefix.dust, Materials.Carbon, 1)
+				.outputs(OreDictUnifier.get(OrePrefix.dust, NPUMaterials.EglinSteel, 13)).buildAndRegister();
+		RecipeMaps.MIXER_RECIPES.recipeBuilder().duration(50).EUt(120)
+				.input(OrePrefix.dust, Materials.Titanium, 9)
+				.input(OrePrefix.dust, Materials.Carbon, 9)
+				.input(OrePrefix.dust, Materials.Lithium, 9)
+				.input(OrePrefix.dust, Materials.Sulfur, 9)
+				.fluidInputs(Materials.Hydrogen.getFluid(500), Materials.Potassium.getFluid(144*9))
+				.outputs(OreDictUnifier.get(OrePrefix.dust, NPUMaterials.Grisium, 48)).buildAndRegister();
+		RecipeMaps.MIXER_RECIPES.recipeBuilder().duration(50).EUt(120)
+				.input(OrePrefix.dust, Materials.Chrome, 7)
+				.input(OrePrefix.dust, Materials.Molybdenum, 10)
+				.input(OrePrefix.dust, Materials.Invar, 10)
+				.input(OrePrefix.dust, Materials.Nichrome, 13)
+				.fluidInputs(Materials.Nickel.getFluid(144*3))
+				.outputs(OreDictUnifier.get(OrePrefix.dust, NPUMaterials.Inconel625, 43)).buildAndRegister();
+		RecipeMaps.MIXER_RECIPES.recipeBuilder().duration(50).EUt(120)
+				.input(OrePrefix.dust, Materials.Steel, 16)
+				.input(OrePrefix.dust, Materials.Molybdenum, 1)
+				.input(OrePrefix.dust, Materials.Titanium, 1)
+				.input(OrePrefix.dust, Materials.Cobalt, 2)
+				.fluidInputs(Materials.Nickel.getFluid(144*4))
+				.outputs(OreDictUnifier.get(OrePrefix.dust, NPUMaterials.MaragingSteel250, 24)).buildAndRegister();
+		RecipeMaps.MIXER_RECIPES.recipeBuilder().duration(50).EUt(120)
+				.input(OrePrefix.dust, Materials.Lead, 2)
+				.input(OrePrefix.dust, Materials.Bronze, 2)
+				.input(OrePrefix.dust, Materials.Tin, 1)
+				.outputs(OreDictUnifier.get(OrePrefix.dust, NPUMaterials.Potin, 5)).buildAndRegister();
+		RecipeMaps.MIXER_RECIPES.recipeBuilder().duration(50).EUt(120)
+				.input(OrePrefix.dust, Materials.Uranium, 9)
+				.input(OrePrefix.dust, Materials.Titanium, 1)
+				.outputs(OreDictUnifier.get(OrePrefix.dust, NPUMaterials.Staballoy, 10)).buildAndRegister();
+		RecipeMaps.MIXER_RECIPES.recipeBuilder().duration(50).EUt(120)
+				.input(OrePrefix.dust, Materials.Yttrium, 2)
+				.input(OrePrefix.dust, Materials.Molybdenum, 4)
+				.input(OrePrefix.dust, Materials.Chrome, 2)
+				.input(OrePrefix.dust, Materials.Titanium, 2)
+				.fluidInputs(Materials.Nickel.getFluid(144*15))
+				.outputs(OreDictUnifier.get(OrePrefix.dust, NPUMaterials.HastelloyN, 25)).buildAndRegister();
+		RecipeMaps.MIXER_RECIPES.recipeBuilder().duration(50).EUt(120)
+				.input(OrePrefix.dust, Materials.Gold, 7)
+				.input(OrePrefix.dust, Materials.Copper, 3)
+				.outputs(OreDictUnifier.get(OrePrefix.dust, NPUMaterials.Tumbaga, 10)).buildAndRegister();
+		RecipeMaps.MIXER_RECIPES.recipeBuilder().duration(50).EUt(120)
+				.input(OrePrefix.dust, Materials.Cobalt, 9)
+				.input(OrePrefix.dust, Materials.Chrome, 9)
+				.input(OrePrefix.dust, Materials.Manganese, 5)
+				.input(OrePrefix.dust, Materials.Titanium, 2)
+				.outputs(OreDictUnifier.get(OrePrefix.dust, NPUMaterials.Stellite, 25)).buildAndRegister();
+		RecipeMaps.MIXER_RECIPES.recipeBuilder().duration(50).EUt(120)
+				.input(OrePrefix.dust, Materials.Cobalt, 4)
+				.input(OrePrefix.dust, Materials.Chrome, 3)
+				.input(OrePrefix.dust, Materials.Phosphorus, 2)
+				.input(OrePrefix.dust, Materials.Molybdenum, 1)
+				.outputs(OreDictUnifier.get(OrePrefix.dust, NPUMaterials.Talonite, 10)).buildAndRegister();
+		RecipeMaps.MIXER_RECIPES.recipeBuilder().duration(100).EUt(120)
+				.input(OrePrefix.dust, Materials.Redstone)
+				.input(OrePrefix.dust, Materials.Sulfur)
+				.input(OrePrefix.dust, Materials.Blaze)
+				.outputs(OreDictUnifier.get(OrePrefix.dust, NPUMaterials.Pyrotheum,2)).buildAndRegister();
+
+		RecipeMaps.FLUID_EXTRACTION_RECIPES.recipeBuilder().duration(32).EUt(2)
+				.input(OrePrefix.dust, NPUMaterials.Pyrotheum)
+				.fluidOutputs(NPUMaterials.Pyrotheum.getFluid(250)).buildAndRegister();
+
+		RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().fluidInputs(NPUMaterials.HastelloyN.getFluid(144 * 4)).inputs(NPUMetaBlocks.METAL_CASING.getItemVariant(NPUMetalCasing.MetalCasingType.STABALLOY, 2)).inputs(CountableIngredient.from(OrePrefix.circuit, Tier.Extreme)).outputs(NPUMetaBlocks.MULTIBLOCK_CASING.getItemVariant(NPUMultiblockCasing.CasingType.LARGE_ASSEMBLER, 2)).duration(600).EUt(8000).buildAndRegister();
+		RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder().inputs(MetaBlocks.METAL_CASING.getItemVariant(BlockMetalCasing.MetalCasingType.STEEL_SOLID)).fluidInputs(Materials.Polytetrafluoroethylene.getFluid(216)).outputs( NPUMetaBlocks.MULTIBLOCK_CASING.getItemVariant(NPUMultiblockCasing.CasingType.CHEMICALLY_INERT, 1)).duration(100).EUt(8000).buildAndRegister();
+
+		ModHandler.addShapedRecipe("red_steel_casing", NPUMetaBlocks.METAL_CASING.getItemVariant(NPUMetalCasing.MetalCasingType.RED_STEEL_CASING, 3), "PhP", "PFP", "PwP", 'P', new UnificationEntry(OrePrefix.plate, Materials.RedSteel), 'F', new UnificationEntry(OrePrefix.frameGt, Materials.RedSteel));
+		ModHandler.addShapedRecipe("eglin_steel_casing", NPUMetaBlocks.METAL_CASING.getItemVariant(NPUMetalCasing.MetalCasingType.EGLIN_STEEL, 3), "PhP", "PFP", "PwP", 'P', new UnificationEntry(OrePrefix.plate, NPUMaterials.EglinSteel), 'F', new UnificationEntry(OrePrefix.frameGt, NPUMaterials.EglinSteel));
+		ModHandler.addShapedRecipe("grisium_casing", NPUMetaBlocks.METAL_CASING.getItemVariant(NPUMetalCasing.MetalCasingType.GRISIUM, 3), "PhP", "PFP", "PwP", 'P', new UnificationEntry(OrePrefix.plate, NPUMaterials.Grisium), 'F', new UnificationEntry(OrePrefix.frameGt, NPUMaterials.Grisium));
+		ModHandler.addShapedRecipe("inconel_casing", NPUMetaBlocks.METAL_CASING.getItemVariant(NPUMetalCasing.MetalCasingType.INCONEL, 3), "PhP", "PFP", "PwP", 'P', new UnificationEntry(OrePrefix.plate, NPUMaterials.Inconel625), 'F', new UnificationEntry(OrePrefix.frameGt, NPUMaterials.Inconel625));
+		ModHandler.addShapedRecipe("maraging_steel_casing", NPUMetaBlocks.METAL_CASING.getItemVariant(NPUMetalCasing.MetalCasingType.MARAGING_STEEL, 3), "PhP", "PFP", "PwP", 'P', new UnificationEntry(OrePrefix.plate, NPUMaterials.MaragingSteel250), 'F', new UnificationEntry(OrePrefix.frameGt, NPUMaterials.MaragingSteel250));
+		ModHandler.addShapedRecipe("potin_casing", NPUMetaBlocks.METAL_CASING.getItemVariant(NPUMetalCasing.MetalCasingType.POTIN, 3), "PhP", "PFP", "PwP", 'P', new UnificationEntry(OrePrefix.plate, NPUMaterials.Potin), 'F', new UnificationEntry(OrePrefix.frameGt, NPUMaterials.Potin));
+		ModHandler.addShapedRecipe("staballoy_casing", NPUMetaBlocks.METAL_CASING.getItemVariant(NPUMetalCasing.MetalCasingType.STABALLOY, 3), "PhP", "PFP", "PwP", 'P', new UnificationEntry(OrePrefix.plate, NPUMaterials.Staballoy), 'F', new UnificationEntry(OrePrefix.frameGt, NPUMaterials.Staballoy));
+		ModHandler.addShapedRecipe("hastelloy_n_casing", NPUMetaBlocks.METAL_CASING.getItemVariant(NPUMetalCasing.MetalCasingType.HASTELLOY_N, 3), "PhP", "PFP", "PwP", 'P', new UnificationEntry(OrePrefix.plate, NPUMaterials.HastelloyN), 'F', new UnificationEntry(OrePrefix.frameGt, NPUMaterials.HastelloyN));
+		ModHandler.addShapedRecipe("tumbaga_casing", NPUMetaBlocks.METAL_CASING.getItemVariant(NPUMetalCasing.MetalCasingType.TUMBAGA, 3), "PhP", "PFP", "PwP", 'P', new UnificationEntry(OrePrefix.plate, NPUMaterials.Tumbaga), 'F', new UnificationEntry(OrePrefix.frameGt, NPUMaterials.Tumbaga));
+		ModHandler.addShapedRecipe("stellite_talonite_casing", NPUMetaBlocks.METAL_CASING.getItemVariant(NPUMetalCasing.MetalCasingType.STELLITE_TALONITE, 3), "PhP", "PFP", "PwP", 'P', new UnificationEntry(OrePrefix.plate, NPUMaterials.Stellite), 'F', new UnificationEntry(OrePrefix.frameGt, NPUMaterials.Talonite));
+
+
+
+
+		NPULog.info(String.format("Advanced recipes was registered for  %.3f seconds", (System.currentTimeMillis() - time) / 1000.0F));
 	}
 	
 	public static void generatedRecipes() {
